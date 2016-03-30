@@ -4,10 +4,15 @@
  * Copyright © 2016 Dale Corns
  */
 'use strict';
-eventsApp.factory('eventData', function ($http, $log) {
+eventsApp.factory('eventData', function ($resource) {
+  var resource = $resource('data/event/:id', {id: '@id'});
   return {
-    getEvent: function (successCb) {
-      return $http({method: 'GET', url: 'data/event/1'});
+    getEvent: function () {
+      return resource.get({id:1});
+    },
+    save: function(event){
+      event.id = 400;
+      return resource.save(event);
     }
   }
 });

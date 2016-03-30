@@ -6,15 +6,18 @@
 'use strict';
 
 eventsApp.controller('EventController',
-  function EventController($scope, eventData, $log){
+  function EventController($scope, eventData){
     $scope.sortorder = '-vote';
     eventData.getEvent()
-      .success(function(event){
-      $scope.event = event;
-    })
-      .error(function(data, status, headers, config){
-        $log.warn(data, status, headers(), config);
-      });
+      .$promise.then(
+      function(event){
+        $scope.event = event; console.log(event);
+      }).
+      catch(function(reject){
+      console.log(reject);
+    });
+      
+
     $scope.upVoteSession = function(session){
       session.vote++;
     };
