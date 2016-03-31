@@ -13,7 +13,7 @@ eventsApp.filter('durations', function(){
         return "Half Day";
         break;
       case 4:
-        return "Half Day";
+        return "All Day";
         break;
     }
   }
