@@ -6,5 +6,14 @@ var eventsApp = angular.module('eventsApp', ['ngResource', 'ngRoute'])
     $routeProvider.when('/newEvent', {
       templateUrl: 'templates/newEvent.html',
       controller: 'EditEventController'
-    })
+    });
+    $routeProvider.when('/events',{
+      templateUrl: 'templates/eventList.html',
+      controller: 'EventListController'
+    });
+    $routeProvider.when('/event/:eventId',{
+      templateUrl: 'templates/eventDetails.html',
+      controller: 'EventController'
+    });
+    $routeProvider.otherwise({redirectTo: '/events'});
   });
