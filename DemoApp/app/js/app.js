@@ -12,8 +12,14 @@ var eventsApp = angular.module('eventsApp', ['ngResource', 'ngRoute'])
       controller: 'EventListController'
     });
     $routeProvider.when('/event/:eventId',{
-      template: 'templates/eventDetails.html',
-      controller: 'EventController'
+      templateUrl: 'templates/eventDetails.html',
+      controller: 'EventController',
+      //Using resolve to keep a page from partially loading while it is waiting for data
+      resolve: {
+        event: function($route, eventData){
+          return eventData.getEvent($route.current.pathParams.eventId).$promise;
+        }
+      }
     });
     $routeProvider.otherwise({redirectTo: '/events'});
     $locationProvider.html5Mode(true);

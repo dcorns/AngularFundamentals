@@ -8,13 +8,7 @@
 eventsApp.controller('EventController',
   function EventController($scope, eventData, $anchorScroll, $routeParams, $route) {
     $scope.sortorder = 'name';
-    eventData.getEvent($routeParams.eventId)
-      .$promise.then(
-      function (event) {
-        $scope.event = event;
-      }).catch(function (reject) {
-      console.log(reject);
-    });
+    $scope.event = $route.current.locals.event; //using resolve in the route provider
     
     $scope.upVoteSession = function (session) {
       session.vote++;
