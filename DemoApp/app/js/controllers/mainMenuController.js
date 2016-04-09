@@ -15,6 +15,7 @@ eventsApp.controller('MainMenuController',
     console.log('hash:', $location.hash());
     console.log('url:', $location.url());
     $scope.createEvent = function () {
+      $location.replace();//changes view without changing history
       $location.url('newEvent');
     }
   });
