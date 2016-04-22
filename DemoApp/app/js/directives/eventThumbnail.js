@@ -9,6 +9,9 @@ eventsApp.directive('eventThumbnail', function () {
   return{
     restrict: 'E',
     replace: true, //replace the directive tag with the html rather than putting the html inside the tag
-    templateUrl: 'templates/directives/eventThumbnail.html'
+    templateUrl: 'templates/directives/eventThumbnail.html',
+    scope:{
+      event: '='
+    }
   }
 });
