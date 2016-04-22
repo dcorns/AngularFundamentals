@@ -11,10 +11,10 @@ eventsApp.controller('EventController',
     $scope.event = $route.current.locals.event; //using resolve in the route provider
     
     $scope.upVoteSession = function (session) {
-      session.vote++;
+      session.upVoteCount++;
     };
     $scope.downVoteSession = function (session) {
-      session.vote--;
+      session.upVoteCount--;
     };
     $scope.scrollToSession = function scrollToSession() {
       $anchorScroll();
