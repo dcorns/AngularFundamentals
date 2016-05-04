@@ -9,7 +9,8 @@ eventsApp.directive('greeting', function(){
     restrict: 'E',
     replace: true,
     template: '<button class="btn" ng-click="sayHello()">Say Hello</button>',
-    controller: 'GreetingController'
+    controller: '@',
+    name: 'foo'
   }
 });
 //This controller could be defined anywhere, in another file or whatever, just as long as it is part of the app, the directive can use it
