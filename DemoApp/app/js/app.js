@@ -7,10 +7,12 @@ var eventsApp = angular.module('eventsApp', ['ngResource', 'ngRoute'])
       templateUrl: 'templates/newEvent.html',
       controller: 'EditEventController'
     });
+    
     $routeProvider.when('/events',{
       templateUrl: 'templates/eventList.html',
       controller: 'EventListController'
     });
+    
     $routeProvider.when('/event/:eventId',{
       templateUrl: 'templates/eventDetails.html',
       controller: 'EventController',
@@ -21,10 +23,12 @@ var eventsApp = angular.module('eventsApp', ['ngResource', 'ngRoute'])
         }
       }
     });
+    
     $routeProvider.when('/sampleDirective',{
       templateUrl: 'templates/sampleDirective.html',
       controller: 'SampleDirectiveController'
     });
+    
     $routeProvider.otherwise({redirectTo: '/events'});
     $locationProvider.html5Mode(true);
   });
