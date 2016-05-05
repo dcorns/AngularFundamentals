@@ -9,6 +9,7 @@ eventsApp.directive('greeting', function(){
     restrict: 'E',
     replace: true,
     template: '<button class="btn" ng-click="sayHello()">Say Hello</button>',
+    priority: 1,
     controller: function ($scope) {
       var greetings = ['hello'];
       $scope.sayHello = function () {
@@ -27,6 +28,7 @@ eventsApp.directive('greeting', function(){
     restrict: 'A',
     //using require to bring in the greeting directive to share its controller
     require: 'greeting',
+    priority: 1,
     //link gets called for every instance of a directive, the controller in the link function is the controller that is part of the greeting directive that we required
     link: function(scope, element, attrs, controller){
       controller.addGreeting('hei');
@@ -38,6 +40,7 @@ eventsApp.directive('greeting', function(){
   return{
     restrict: 'A',
     require: 'greeting',
+    priority: 2,
     link: function(scope, element, attrs, controller){
       controller.addGreeting('goblygook');
     }
