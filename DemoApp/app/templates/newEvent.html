@@ -8,7 +8,7 @@
                 <label for="eventName">Event Name:</label>
                 <input required ng-model="event.name" id="eventName" type="text" placeholder="Name of your event..."/>
                 <label for="eventDate">Event Date:</label>
-                <input required date-keys ng-model="event.date" id="eventDate" placeholder="Date of your event..."/>
+                <input required date-keys date-picker ng-model="event.date" id="eventDate" placeholder="Date of your event..."/>
                 <label for="eventTime">Event Time:</label>
                 <input ng-model="event.time" id="eventTime" type="time" placeholder="Time of your event..."/>
                 <label for="eventLocation">Event Location:</label>
@@ -29,6 +29,3 @@
         </form>
     </div>
 </div>
-<script type="text/javascript">
-    $('#eventDate').datepicker();
-</script>
