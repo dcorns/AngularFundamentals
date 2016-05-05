@@ -4,7 +4,7 @@
  * Copyright © 2016 Dale Corns
  */
 'use strict';
-eventApp.directive('dataKeys', function(){
+eventsApp.directive('dataKeys', function(){
   return{
     restrict: 'A',
     link: function (scope, element, attrs, controller) {
