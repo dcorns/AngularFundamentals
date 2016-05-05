@@ -4,13 +4,13 @@
  * Copyright © 2016 Dale Corns
  */
 'use strict';
-eventsApp.directive('repeatX', function($compile){
+eventsApp.directive('repeatX', function(){
   return{
     //using a link function. notice how it is recreating itself as well as the div content
-    //fix input with the compile service, used to manipulate the DOM prior to link function call
-    link: function(scope, element, attributes, controller){
+    //optimize the DOM manipulation by replacing link with the compile function, compile is for DOM manipulation
+    compile: function(element, attributes){
       for(var i = 0; i < Number(attributes.repeatX)-1; i++){
-        element.after($compile(element.clone().attr('repeat-x', 0))(scope));
+        element.after(element.clone().attr('repeat-x', 0));
       }
     }
   };
