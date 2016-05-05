@@ -8,8 +8,9 @@ eventsApp.directive('greeting', function(){
   return {
     restrict: 'E',
     replace: true,
-    template: '<button class="btn" ng-click="sayHello()">Say Hello</button>',
-    priority: -1,
+    transclude: true,
+    //Transclusion can not be done with buttons, so we put the button in a div along with a div for transclusion
+    template: '<div><button class="btn" ng-click="sayHello()">Say Hello</button><div ng-transclude></div></div>',
     controller: function ($scope) {
       var greetings = ['hello'];
       $scope.sayHello = function () {
@@ -26,11 +27,8 @@ eventsApp.directive('greeting', function(){
 .directive('finnish', function(){
   return{
     restrict: 'A',
-    //using require to bring in the greeting directive to share its controller
-    require: 'greeting',
-    priority: -1,
-    //using the terminal property we are able keep all directives on an element with a lower priority than the directive with terminal set to true from working. We use negetive numbers for priorities here because ng-click is a directive on the element whose priority is lower than 1 or 2 (I think it is 100), so using a positive priority number here would keep ng-click from working. Giving hindi a more negative number insures it is a lower priority because in this case we do not want it to work. So negative priority numbers have less priority as they become more negative and positive priorities have less priority as they become more positive, but a positive number always has a higher priority than a negative one.
-    terminal: true,
+    //require alone looks on the same element for the directive that has the controller. In order to use the controller when it is part of a parent element in relation to the directive trying to use it as is the case when it is nested, we need to use '^' to instruct require to search up the dom for it. However this still will not work unless we are using transclusion in the parent directive.
+    require: '^greeting',
     //link gets called for every instance of a directive, the controller in the link function is the controller that is part of the greeting directive that we required
     link: function(scope, element, attrs, controller){
       controller.addGreeting('hei');
@@ -41,8 +39,7 @@ eventsApp.directive('greeting', function(){
 .directive('hindi', function (){
   return{
     restrict: 'A',
-    require: 'greeting',
-    priority: -2,
+    require: '^greeting',
     link: function(scope, element, attrs, controller){
       controller.addGreeting('goblygook');
     }

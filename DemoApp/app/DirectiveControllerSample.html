@@ -6,8 +6,10 @@
     <link rel="stylesheet" href="/css/app.css"/>
 </head>
 <body>
-<!--The order in which the finnish and hindi directive appear here does not control the order in which they are invoked the directive priority property does that-->
-<greeting finnish hindi></greeting>
+<!--Nesting directives-->
+<greeting>
+    <div finnish hindi></div>
+</greeting>
 
 <script src="lib/jquery.min.js"></script>
 <script src="lib/angular/angular.js"></script>
