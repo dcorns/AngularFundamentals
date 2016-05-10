@@ -12,6 +12,8 @@ app.use(express.static(rootPath + 'app'));
 app.get('/data/event/:id', events.get);
 app.get('/data/event', events.getAll);
 app.post('/data/event/:id', events.save);
+
+app.post('/data/user/:userName', user.save);
 //default response from server for html5 routing
 app.get('*', function (req, res) {
   res.sendFile(rootPath + '/app/index.html' );
