@@ -23,4 +23,20 @@ describe('eventData', function(){
     expect(event.name).toBe('My Event');
   }));
 
+  it('should set the id to 400 when save is called', inject(function(eventData, $httpBackend){
+    $httpBackend.when('POST', 'data/event/400').respond({});
+    var event = {name: 'My Event'};
+    eventData.save(event);
+    $httpBackend.flush();
+    expect(event.id).toBe(400);
+  }));
+
+  it('should make a GET request to data/event when getAllEvents is called', inject(function(eventData, $httpBackend){
+    $httpBackend.when('GET', 'data/event').respond([{name: 'My Event'}]);
+    var events = eventData.getAllEvents();
+    $httpBackend.flush();
+
+    expect(events[0].name).toBe('My Event');
+  }))
+
 });
