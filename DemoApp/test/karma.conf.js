@@ -3,7 +3,7 @@ module.exports = function(config){
 
     basePath : '../app',
 
-    preprocessor:{
+    preprocessors:{
       '**/*.html': 'ng-html2js'
     },
 
