@@ -43,7 +43,7 @@ describe('event registration app', function(){
 
     it('should sort correctly when sort order is changed', function(){
       var selectEl = element(by.model('sortorder'));
-      selectEl.element(by.cssContainingText('option', 'Votes'));
+      selectEl.element(by.cssContainingText('option', 'Votes')).click();
       var firstSession = element.all(by.repeater('session in event.sessions')).first();
       var firstSessionName = firstSession.element(by.binding('title')).getText();
       expect(firstSessionName).toEqual('Scopes for fun and profit');
