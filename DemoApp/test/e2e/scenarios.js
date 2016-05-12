@@ -49,5 +49,11 @@ describe('event registration app', function(){
       expect(firstSessionName).toEqual('Scopes for fun and profit');
     });
 
+    it('should increment session count when session is up voted', function(){
+      element.all(by.deepCss('div.votingButton')).first().click();
+      var firstVoteCount = element.all(by.binding('count')).first();
+      expect(firstVoteCount.getText()).toEqual('1');
+    });
+
   });
 });
